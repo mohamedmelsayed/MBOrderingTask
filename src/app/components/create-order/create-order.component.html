@@ -1,0 +1,50 @@
+<h1>Create Coffee Order</h1>
+
+<mat-card>
+    <form name="myForm" #myForm="ngForm">
+
+        <mat-form-field appearance="fill">
+            <mat-label>Size</mat-label>
+            <mat-select>
+                <mat-option *ngFor="let size of sizes" [value]="size[0]" (onSelectionChange)="select(size,'size')">
+                    {{size[0]}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+
+
+        <mat-form-field appearance="fill">
+            <mat-label>coffee Type</mat-label>
+            <mat-select>
+                <mat-option *ngFor="let type of coffeeTypes" [value]="type[0]"
+                    (onSelectionChange)="select(type,'coffee')">
+                    {{type[0]}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+            <mat-label>Milk Type</mat-label>
+            <mat-select>
+                <mat-option *ngFor="let type of milkTypes" [value]="type[0]"
+                    (onSelectionChange)="select(type,'milkTypes')">
+                    {{type[0]}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+
+
+        <mat-form-field appearance="fill">
+            <mat-label>Status</mat-label>
+            <mat-select>
+                <mat-option *ngFor="let status of states" [value]="status"
+                    (onSelectionChange)="select(status,'status')">
+                    {{status}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+
+
+        <button mat-raised-button (click)="save()">Create</button>
+    </form>
+</mat-card>
