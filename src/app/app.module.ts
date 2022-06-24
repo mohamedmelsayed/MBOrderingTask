@@ -11,13 +11,15 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CreateOrderComponent } from './components/create-order/create-order.component';
 import { OrderListComponent } from './components/order-list/order-list.component';
 import { HomeComponent } from './components/home/home.component';
+import { BaristaLogComponent } from './components/barista-log/barista-log.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     CreateOrderComponent,
     OrderListComponent,
-    HomeComponent
+    HomeComponent,
+    BaristaLogComponent
   ],
   imports: [
     BrowserModule,

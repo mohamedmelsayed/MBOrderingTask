@@ -25,6 +25,10 @@ export class HttpServiceService {
     return this._http.get(this.barista_ms + query, this.getHeaders());
 
   }
+  putBarista(query, body) {
+    return this._http.put(this.barista_ms + query, body, this.getHeaders());
+
+  }
 
 
   insert(route, body) {

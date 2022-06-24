@@ -7,18 +7,17 @@ import { HttpServiceService } from 'src/app/services/http-service.service';
   styleUrls: ['./create-order.component.scss']
 })
 export class CreateOrderComponent implements OnInit {
-  public order: any = { price: 0, withMilk: false };
+  public order: any = { price: 0 };
   public states: any[] = [];
   public sizes: any[] = [];
   public coffeeTypes: any[] = [];
   public milkTypes: any[] = [];
+  public pickup: any[] = [];
   constructor(private _http: HttpServiceService) { }
 
 
   ngOnInit() {
-    this._http.get("options/status").subscribe((res: any) => {
-      this.states = res;
-    });
+
     this._http.get("options/size").subscribe((res: any) => {
       this.sizes = Object.entries(res);
       console.log(Object.entries(res));
@@ -38,36 +37,44 @@ export class CreateOrderComponent implements OnInit {
       this.milkTypes = Object.entries(res);
       console.log(Object.entries(res));
     });
+
+    this._http.get("options/pickUp").subscribe((res: any) => {
+      this.pickup = Object.entries(res);
+      console.log(Object.entries(res));
+    });
   }
 
   save() {
     console.log(JSON.stringify(this.order));
 
     this._http.insert("order", JSON.stringify(this.order)).subscribe((res: any) => {
-      console.log(res);
-      this.order = { price: 0, withMilk: false };
+      if (res.id > 0) {
+        this.order = { price: 0 };
+
+      }
 
     });
 
 
   }
-  select(status, selection) {
+  select(value, selection) {
     switch (selection) {
-      case 'status':
-        this.order.status = status;
+      case 'pickup':
+        this.order.price += value[1];
 
+        this.order.delivery = value[0];
         break
       case 'size':
-        this.order.price += status[1];
-        this.order.size = status[0];
+        this.order.price += value[1];
+        this.order.size = value[0];
         break;
       case 'coffee':
-        this.order.price += status[1];
-        this.order.coffeeType = status[0];
+        this.order.price += value[1];
+        this.order.coffeeType = value[0];
         break;
-      case 'milkTypes':
-        this.order.price += status[1];
-        this.order.milkType = status[0];
+      case 'milk':
+        this.order.price += value[1];
+        this.order.milkType = value[0];
         this.order.withMilk = true;
         break;
       default:

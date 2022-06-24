@@ -3,43 +3,41 @@
 <mat-card>
     <form name="myForm" #myForm="ngForm">
 
-        <mat-form-field appearance="fill">
+        <mat-form-field appearance="fill" name="size">
             <mat-label>Size</mat-label>
             <mat-select>
-                <mat-option *ngFor="let size of sizes" [value]="size[0]" (onSelectionChange)="select(size,'size')">
+                <mat-option *ngFor="let size of sizes" [value]="size" (onSelectionChange)="select(size,'size')">
                     {{size[0]}}
                 </mat-option>
             </mat-select>
         </mat-form-field>
 
 
-        <mat-form-field appearance="fill">
+        <mat-form-field appearance="fill" name="coffee">
             <mat-label>coffee Type</mat-label>
             <mat-select>
-                <mat-option *ngFor="let type of coffeeTypes" [value]="type[0]"
-                    (onSelectionChange)="select(type,'coffee')">
+                <mat-option *ngFor="let type of coffeeTypes" [value]="type" (onSelectionChange)="select(type,'coffee')">
                     {{type[0]}}
                 </mat-option>
             </mat-select>
         </mat-form-field>
 
-        <mat-form-field appearance="fill">
+        <mat-form-field appearance="fill" name="milk">
             <mat-label>Milk Type</mat-label>
             <mat-select>
-                <mat-option *ngFor="let type of milkTypes" [value]="type[0]"
-                    (onSelectionChange)="select(type,'milkTypes')">
+                <mat-option *ngFor="let type of milkTypes" [value]="type" (onSelectionChange)="select(type,'milk')">
                     {{type[0]}}
                 </mat-option>
             </mat-select>
         </mat-form-field>
 
 
-        <mat-form-field appearance="fill">
-            <mat-label>Status</mat-label>
+
+        <mat-form-field appearance="fill" name="Delivery">
+            <mat-label>Delivery Type</mat-label>
             <mat-select>
-                <mat-option *ngFor="let status of states" [value]="status"
-                    (onSelectionChange)="select(status,'status')">
-                    {{status}}
+                <mat-option *ngFor="let type of pickup" [value]="type" (onSelectionChange)="select(type,'pickup')">
+                    {{type[0]}}
                 </mat-option>
             </mat-select>
         </mat-form-field>

@@ -29,4 +29,10 @@ export class OrderListComponent implements OnInit {
       // this.list = res;
     });
   }
+
+  picked(id, order) {
+    this._http.putBarista("" + id, JSON.stringify({ orderId: id, status: "Picked" })).subscribe((res: any) => {
+
+    });
+  }
 }

@@ -1,0 +1,13 @@
+<h1>Barista processing</h1>
+
+<table>
+    <thead>
+        <td>Id</td>
+        <td>Status</td>
+    </thead>
+    <tr *ngFor="let order of list">
+        <td>{{order.orderId}}</td>
+        <td>{{order.status}}</td>
+
+    </tr>
+</table>

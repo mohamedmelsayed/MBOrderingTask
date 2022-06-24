@@ -21,12 +21,9 @@
         <td>{{order.size}}</td>
         <td>{{order.price}}</td>
         <td>
-            <button *ngIf="order.status!='Completed'" mat-raised-button
-                (click)="changeStatus('Completed',order.id,order)">completed</button>
+            <button *ngIf="order.status=='Completed'" mat-raised-button (click)="picked(order.id,order)">Picked</button>
             <button *ngIf="order.status!='Completed'&&order.status!='Canceled'" mat-raised-button
                 (click)="changeStatus('Canceled',order.id,order)">canceled</button>
-            <button *ngIf="order.status!='Processing'&&order.status!='Completed'" mat-raised-button
-                (click)="changeStatus('Processing,order.id',order)">processing</button>
 
         </td>
     </tr>
